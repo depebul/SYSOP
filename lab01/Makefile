@@ -1,15 +1,15 @@
 CC = gcc
-CFLAGS = -Wall -std=c17
+CFLAGS = -Wall -std=c17 -g
 
 all: countdown
 
 countdown: countdown.c
-	$(CC) $(CFLAGS) countdown.c
+	$(CC) $(CFLAGS) -c countdown.c
+	$(CC) $(CFLAGS) countdown.c -o countdown
 
 
 clean:
 	rm -f countdown *.o
 	rm -r *.dSYM
-	rm -r *.out
 
 .PHONY: all clean
