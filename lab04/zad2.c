@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
 
         execl("/bin/ls", "ls", argv[1], NULL);
         perror("execl");
-        return 1;
+                return 1;
     }
     else
     {
@@ -44,6 +44,6 @@ int main(int argc, char *argv[])
         printf("Child exit code: %d\n", WEXITSTATUS(status));
         printf("Parent's local = %d, parent's global = %d\n", local, global);
     }
-
+    printf("koniec\n");
     return 0;
 }
