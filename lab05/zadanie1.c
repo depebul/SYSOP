@@ -4,8 +4,7 @@
 #include <signal.h>
 #include <unistd.h>
 
-// Signal handler function for SIGUSR1
-void sigusr1_handler(int signum)
+void handler(int signum)
 {
     printf("Received SIGUSR1 signal (handler mode)\n");
 }
@@ -21,11 +20,9 @@ int main(int argc, char *argv[])
 
     sigset_t pending_mask;
     sigset_t mask;
-    struct sigaction sa;
 
     printf("PID: %d\n", getpid());
 
-    // Set up reaction based on command line argument
     if (strcmp(argv[1], "ignore") == 0)
     {
         printf("Setting up SIGUSR1 to be ignored\n");
@@ -34,10 +31,7 @@ int main(int argc, char *argv[])
     else if (strcmp(argv[1], "handler") == 0)
     {
         printf("Installing handler for SIGUSR1\n");
-        sa.sa_handler = sigusr1_handler;
-        sigemptyset(&sa.sa_mask);
-        sa.sa_flags = 0;
-        sigaction(SIGUSR1, &sa, NULL);
+        signal(SIGUSR1, handler);
     }
     else if (strcmp(argv[1], "mask") == 0)
     {
@@ -61,7 +55,6 @@ int main(int argc, char *argv[])
     raise(SIGUSR1);
     printf("After raise()\n");
 
-    // For the mask mode, check if the signal is pending
     if (strcmp(argv[1], "mask") == 0)
     {
         sigpending(&pending_mask);
