@@ -1,0 +1,9 @@
+{
+    "github.copilot.enable": {
+        "*": false,
+        "quarto": false,
+        "plaintext": false,
+        "markdown": true,
+        "scminput": false
+    }
+}
