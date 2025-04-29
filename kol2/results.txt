@@ -1,6 +1,0 @@
-PASS: file reading
-PASS: file writing
-PASS: fork exec
-PASS: signal mask
-PASS: create pipe
-PASS: writing to pipe
