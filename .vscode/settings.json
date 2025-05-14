@@ -1,9 +1,5 @@
 {
-    "github.copilot.enable": {
-        "quarto": false,
-        "*": false,
-        "plaintext": false,
-        "markdown": true,
-        "scminput": false
+    "files.associations": {
+        "types.h": "c"
     }
 }

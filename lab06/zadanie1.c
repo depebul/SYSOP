@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <sys/time.h> // For gettimeofday
 #include <time.h>
 
 double calculate_integral_part(double start, double end, double width)
@@ -41,7 +42,8 @@ int main(int argc, char *argv[])
 
     for (int k = 1; k <= n_processes_limit; ++k)
     {
-        clock_t start_time = clock();
+        struct timeval start_time, end_time;
+        gettimeofday(&start_time, NULL);
         pid_t pids[k];
         int pipes[k][2];
         double results[k];
@@ -101,8 +103,9 @@ int main(int argc, char *argv[])
             total_integral += results[i];
         }
 
-        clock_t end_time = clock();
-        double execution_time = (double)(end_time - start_time) / CLOCKS_PER_SEC;
+        gettimeofday(&end_time, NULL);
+        double execution_time = (end_time.tv_sec - start_time.tv_sec) +
+                                (end_time.tv_usec - start_time.tv_usec) / 1000000.0;
 
         printf("Liczba procesów (k): %d, Wynik: %.8f, Czas wykonania: %.4f s\n", k, total_integral, execution_time);
     }
