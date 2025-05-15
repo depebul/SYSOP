@@ -15,14 +15,6 @@ void sem_op(int sem_id, int sem_num, int op)
     semop(sem_id, &sb, 1);
 }
 
-void read_shift_buffer(sem_t *sem_buffer, char *buffer, char *dest)
-{
-    sem_wait(sem_buffer);
-    strncpy(dest, buffer, MESSAGE_LENGTH);
-    memmove(buffer, buffer + MESSAGE_LENGTH, strlen(buffer) - MESSAGE_LENGTH + 1);
-    sem_post(sem_buffer);
-}
-
 void print_message(char *message)
 {
     for (int i = 0; i < MESSAGE_LENGTH; i++)
