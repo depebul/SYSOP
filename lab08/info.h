@@ -14,11 +14,9 @@
 #define MESSAGE_LENGTH 10
 #define MEMORY_SIZE 1024
 
-// Keys for System V IPC
 #define SHM_KEY 12345
 #define SEM_KEY 12346
 
-// Semaphore indices
 #define SEM_QUEUE_SPACE 0
 #define SEM_REQUEST_COUNT 1
 #define SEM_BUFFER_CHANGE 2
