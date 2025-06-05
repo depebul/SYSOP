@@ -10,7 +10,7 @@
 #include <unistd.h>
 #include <string.h>
 
-#define QUEUE_LENGTH 5
+#define QUEUE_LENGTH 1
 #define MESSAGE_LENGTH 10
 #define MEMORY_SIZE 1024
 

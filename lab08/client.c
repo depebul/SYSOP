@@ -54,7 +54,7 @@ int main()
 
         printf("Client %d sent: %s\n", getpid(), message);
 
-        sleep(1 + rand() % 5);
+        sleep(5 + rand() % 5);
     }
 
     return 0;
