@@ -1,13 +1,11 @@
-CC = gcc
-CFLAGS = -Wall -pthread
-TARGETS = main
+CC=gcc
+CFLAGS=-Wall -pthread
 
-all: $(TARGETS)
+all: zad
 
-main: main.c
+zad: main.c 
 	$(CC) $(CFLAGS) main.c -o main
 
-
+.PHONY: clean
 clean:
-	rm -f $(TARGETS)
-	rm -r *.dSYM
+	rm main server

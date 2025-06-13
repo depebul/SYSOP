@@ -89,7 +89,6 @@ int main(int argc, char *argv[])
 
     signal(SIGINT, client_leave);
 
-    // Tworzenie socketu UDP
     sock = socket(AF_INET, SOCK_DGRAM, 0);
     if (sock < 0)
     {
@@ -102,7 +101,6 @@ int main(int argc, char *argv[])
     server_address.sin_port = htons(atoi(argv[3]));
     server_address.sin_addr.s_addr = inet_addr(argv[2]);
 
-    // Wysłanie nazwy użytkownika do serwera
     sendto(sock, argv[1], strlen(argv[1]), 0, (struct sockaddr *)&server_address, sizeof(server_address));
 
     printf("Connected! Commands: /list, /msg <name> <text>, /stop\n");
